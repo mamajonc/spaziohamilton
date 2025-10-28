@@ -1,203 +1,147 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
 <head>
- 
-<title>Spazio Hamilton</title>
-<meta name="description" content="{MetaDescription}" />
-<link rel="alternate" type="application/rss+xml" href="{RSS}"> 
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
- 
-<style type="text/css">
- 
-        /* basic customization */
- 
-    body{
-    word-wrap:break-word;
-    font-size:16px;
-    font-family:courier;
-    color:black;
-    background-color:white; 
-    background-size: fixed;
-    background-size: cover;}
- 
-    a{
-    color:#b619ff;
-    font-weight:bold;
-    text-decoration:underline;}
- 
-    a:hover{
-    color:black;
-    text-decoration:none;
-    cursor:help;}
- 
-    p{
-    margin:0 0 10px 0;
-    padding:10px;}
- 
-    ::selection{ 
-    color:white; 
-    background-color:blue;}
- 
-    ::-webkit-scrollbar {
-    width: 15px;
-    height: 10px;}
- 
-    ::-webkit-scrollbar-thumb:vertical{
-    background-color: #fff;
-    background-image: url(https://i.imgur.com/Qtm9Z60.png);
-    border-top: 1px solid #bdbdbd;
-    border-left: 1px solid #bdbdbd;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;}
- 
-    ::-webkit-scrollbar-track {
-    background-color: #fff;
-    background-image: url(https://i.imgur.com/IGXGYKz.png);}
- 
-    ::-webkit-scrollbar-button:vertical:increment {
-    background-image: url(https://i.imgur.com/WhC8iy3.png);
-    width: 14px;
-    height: 16px;
-    border-top: 1px solid #bdbdbd;
-    border-left: 1px solid #bdbdbd;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;}
- 
-    ::-webkit-scrollbar-button:vertical:decrement {
-    background-image: url(https://i.imgur.com/fQ18mrR.png);
-    border-top: 1px solid #bdbdbd;
-    border-left: 1px solid #bdbdbd;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    width: 14px;
-    height: 16px;}
- 
-        /* end basic customization */
- 
- 
-        /* sidebar */
- 
-    #side{
-    left:0px;
-    width:225px;
-    height:100%;
-    top:-1px;
-    overflow-y:auto;
-    overflow-x:hidden;
-    padding-top:5px;
-    padding-right:10px;
-    padding-left:5px;
-    border-right:3px white outset;
-    background-color:white;
-    position:fixed;}
- 
-    #desc{
-    text-align:center;
-	font-style: italic;
-    padding:5px;
-    overflow:hidden;
-    margin:10px 0 0 0;
-    display:block;}
-	
-	#desc2{
-    text-align:center;
-	font-style: bold;
-    padding:3px;
-    overflow:hidden;
-    margin:10px 0 0 0;
-    display:block;}
- 
-    .button{
-    background:transparent;
-    padding:5px;}
-    .button:hover{
-    cursor:help;}
- 
-    #table, th, td{ 
-    font-family:ms gothic;
-    width:100px;
-    margin:10px 0 0 0;
-    margin-left:-4px;
-    text-align:center;
-    background:transparent;}
- 
-    .side img{
-    border:0px ridge white;}
- 
-        /* sidebar end */
- 
- 
-        /* content */
- 
-    #wrapper{
-    left:400px;
-    overflow:auto;
-    position:absolute;
-    padding:5px;
-    top:10px;
-    overflow-x: hidden;
-    overflow-y:auto;}
- 
-    #content{
-    text-align:center;
-    background:white;
-    width:500px;
-    padding:15px;
-    border:3px outset white;}
- 
-        /* content end */
- 
- 
-        /* credit, and pagedoll */
- 
-    #emoticon{
-    margin:20px 0 0 0;
-    font-size:13px;}
- 
-    #emoticon a{
-    text-decoration:none;}
- 
-    #pagedoll{
-    position:fixed;
-    right:0px;
-    bottom:0px;}
- 
-        /* end credit */
- 
-{CustomCss}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spazio Hamilton</title>
+  <meta name="description" content="Spazio Hamilton – a space for pioneers and dreamers.">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <style>
+    body {
+      font-family: Courier, monospace;
+      font-size: 16px;
+      color: black;
+      background-color: white;
+      word-wrap: break-word;
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      color: #b619ff;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    a:hover {
+      color: black;
+      text-decoration: none;
+      cursor: help;
+    }
+
+    ::selection {
+      color: white;
+      background-color: blue;
+    }
+
+    /* Sidebar */
+    #side {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 225px;
+      height: 100%;
+      background: white;
+      border-right: 3px white outset;
+      padding: 10px;
+      overflow-y: auto;
+      box-sizing: border-box;
+    }
+
+    #side img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #desc {
+      text-align: center;
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    #desc p {
+      text-align: right;
+      margin: 5px 0 0 0;
+      padding: 0;
+    }
+
+    /* Main content */
+    #wrapper {
+      margin-left: 250px;
+      padding: 60px 40px 100px; /* bottom padding so text doesn’t overlap footer */
+      text-align: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    #wrapper h1 {
+      margin-top: 100px;
+    }
+
+    /* Fixed footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      border-top: 1px solid #ccc;
+      background-color: white;
+      padding: 12px 0;
+      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.05);
+      z-index: 1000;
+    }
+
+    footer img {
+      max-width: 1em;
+      max-height: 1em;
+      margin-left: .2em;
+      vertical-align: middle;
+    }
+
+    footer a {
+      color: #b619ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
 </head>
+
 <body>
-<div id="side">
-<div class="side img">
-<img style="margin:0 0 5px 0" src="./images/margaret.jpg" width="220px"></div>
-<div id="desc">
- 
-"We had to find a way and we did. Looking back, we were the luckiest people in the world; there was no choice but to be pioneer"</br>
-  Margaret H. Hamilton
 
-</br></br></br></br></br>
-<div id="emoticon">
-<b>Spazio Hamilton © 2025</b> </br>
-The content on this website is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></br><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">
-</div>
+  <aside id="side">
+    <img src="./images/margaret.jpg" alt="Margaret Hamilton">
+    <div id="desc">
+	</br>
+      <b>"We had to find a way and we did. Looking back, we were the luckiest people in the world; there was no choice but to be pioneers."</b>
+      <p>Margaret Hamilton</p>
+    </div>
+  </aside>
 
-</div>
-</div>
- 
-<div id="wrapper">
-<!--div id="content"-->
-</br></br></br></br></br>
-<center>Coming Soon</center>
-<center>███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</center></br></br></br></br></br>
-</div>
-</div>
- 
-<div id="pagedoll">
-<a href="/" width="100"></a>
-</div>
- 
+  <main id="wrapper">
+    <h1>Coming Soon</h1>
+    <p>███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</p>
+  </main>
+
+  <footer>
+    <strong>Spazio Hamilton © 2025 - </strong><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+    <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="CC">
+    <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="BY">
+    <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="NC">
+    <img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="SA">
+  </footer>
+
 </body>
 </html>
