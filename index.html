@@ -1,55 +1,272 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE HTML>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Spazio Hamilton</title>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+ 
+<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+ 
+┍━━━━━━━━━━━━━━━━━━━━━ 📌 ━━━━━━━━━━━━━━━━━━━━┑
+|                                             |
+|           Created by Emoticon!              |
+|      Credit is really appreciated           |
+|                    ^.^                      |
+|                                             |
+|      Please contact if there's an issue     |
+|  or if you need help building your website! |
+|                                             |
+|             Reach me on Tumblr              |
+|       https://jellyparty.tumblr.com/        |
+|                                             |
+┕━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┙
+ 
+// Useful resources
+ 
+// https://walnutcookie.tumblr.com/post/685546241573142528
+// https://http://jellyparty.tumblr.com/tagged/resource
+ 
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -->
+ 
+ 
+<title>Neocities Test 2</title>
+<meta name="description" content="{MetaDescription}" />
+<link rel="alternate" type="application/rss+xml" href="{RSS}"> 
+<link rel="stylesheet" href="https://static.tumblr.com/qxrkgx6/RWPmgn2qa/normalize.min.css">
+<link rel="shortcut icon" href="https://64.media.tumblr.com/c881cf5b3484346277a1997ffbf28873/tumblr_pr080uXzXc1vs5rw4_75sq.gif">
+ 
+ 
+<style type="text/css">
+ 
+        /* basic customization */
+ 
+    body{
+    word-wrap:break-word;
+    font-size:18px;
+    font-family:arial;
+    color:black;
+    background-color:white; 
+    background-size: fixed;
+    background-size: cover;}
+ 
+    a{
+    color:#b619ff;
+    font-weight:bold;
+    text-decoration:underline;}
+ 
+    a:hover{
+    color:black;
+    text-decoration:none;
+    cursor:help;}
+ 
+    p{
+    margin:0 0 10px 0;
+    padding:10px;}
+ 
+    ::selection{ 
+    color:white; 
+    background-color:blue;}
+ 
+    ::-webkit-scrollbar {
+    width: 15px;
+    height: 10px;}
+ 
+    ::-webkit-scrollbar-thumb:vertical{
+    background-color: #fff;
+    background-image: url(https://i.imgur.com/Qtm9Z60.png);
+    border-top: 1px solid #bdbdbd;
+    border-left: 1px solid #bdbdbd;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;}
+ 
+    ::-webkit-scrollbar-track {
+    background-color: #fff;
+    background-image: url(https://i.imgur.com/IGXGYKz.png);}
+ 
+    ::-webkit-scrollbar-button:vertical:increment {
+    background-image: url(https://i.imgur.com/WhC8iy3.png);
+    width: 14px;
+    height: 16px;
+    border-top: 1px solid #bdbdbd;
+    border-left: 1px solid #bdbdbd;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;}
+ 
+    ::-webkit-scrollbar-button:vertical:decrement {
+    background-image: url(https://i.imgur.com/fQ18mrR.png);
+    border-top: 1px solid #bdbdbd;
+    border-left: 1px solid #bdbdbd;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 14px;
+    height: 16px;}
+ 
+        /* end basic customization */
+ 
+ 
+        /* sidebar */
+ 
+    #side{
+    left:0px;
+    width:225px;
+    height:100%;
+    top:-1px;
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding-top:5px;
+    padding-right:10px;
+    padding-left:5px;
+    border-right:3px white outset;
+    background-color:white;
+    position:fixed;}
+ 
+    #desc{
+    text-align:center;
+    padding:5px;
+    overflow:hidden;
+    margin:10px 0 0 0;
+    display:block;}
+ 
+    .button{
+    background:transparent;
+    padding:5px;}
+    .button:hover{
+    cursor:help;}
+ 
+    #table, th, td{ 
+    font-family:ms gothic;
+    width:100px;
+    margin:10px 0 0 0;
+    margin-left:-4px;
+    text-align:center;
+    background:transparent;}
+ 
+    .side img{
+    border:3px ridge white;}
+ 
+        /* sidebar end */
+ 
+ 
+        /* content */
+ 
+    #wrapper{
+    left:400px;
+    overflow:auto;
+    position:absolute;
+    padding:5px;
+    top:10px;
+    overflow-x: hidden;
+    overflow-y:auto;}
+ 
+    #content{
+    text-align:center;
+    background:white;
+    width:500px;
+    padding:15px;
+    border:3px outset white;}
+ 
+        /* content end */
+ 
+ 
+        /* credit, and pagedoll */
+ 
+    #emoticon{
+    margin:20px 0 0 0;
+    font-size:13px;}
+ 
+    #emoticon a{
+    text-decoration:none;}
+ 
+    #pagedoll{
+    position:fixed;
+    right:0px;
+    bottom:0px;}
+ 
+        /* end credit */
+ 
+{CustomCss}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <img src="images/hamilton.png" alt="Spazio Hamilton" class="logo">
-        <h1 class="title">SPAZIO HAMILTON</h1>
-      </div>
-      <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="blog.html">Blog</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <button class="menu-toggle" aria-label="Toggle menu">☰</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-inner container">
-        <div class="hero-text">
-          <h2>Welcome to Spazio Hamilton</h2>
-          <p class="lead">Spazio Hamilton is a space for ideas at the intersection of technology, art, and culture. We gather, read, debate, and build — continuing a tradition of curiosity and craft from the early days of computing to today.</p>
-          <p class="news">Latest: Placeholder news item — replace with your own announcement.</p>
-        </div>
-        <div class="hero-image">
-          <img src="images/hamilton.png" alt="Margaret Hamilton style image">
-        </div>
-      </div>
-    </section>
-
-    <section class="intro container">
-      <h3>About the Club</h3>
-      <p class="muted">Placeholder copy. Replace this paragraph with a short description of Spazio Hamilton's mission, membership, activities, and what prospective members can expect. Keep the tone artistic, thoughtful, and a little mysterious.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© Spazio Hamilton — placeholder. Built for GitHub Pages.</p>
-    </div>
-  </footer>
-
-  <script src="js/scripts.js"></script>
+<div id="side">
+<div class="side img">
+<img style="margin:0 0 5px 0" src="https://64.media.tumblr.com/9ff649d8239a9ae3dc674272fe4fd1d6/b4dd669dd90e8f48-c5/s540x810/509914bf78a4433a10fb142be5d9bf260a2157cc.png" width="220px"></div>
+<audio id="music" src="use https://catbox.moe/"></audio>
+<button style="background-color:transparent; font-family:ms gothic; border:0px; width:235px; margin-left:-5px; font-size:18px" onclick="playpause()">
+<div class="button">&#9654; <marquee style="width:180px; font-size:18px; font-family:ms gothic; margin-bottom:-5px; background:transparent;">Song title by Artist </marquee></div></button>
+<script>
+	let player = document.getElementById("music"); //the audio id
+    let btn = document.getElementById("btn"); //the button id
+    isPlaying = false; //set to false because it is not playing yet
+ 
+    function playpause() {
+        if (!isPlaying) play(); //if isPlaying is false, then play the music
+        else pause(); //if isPlaying is true, then pause the music
+    }
+ 
+    function play(){
+        player.play(); //play the music
+        isPlaying = true; //set to true because the music is playing
+        btn.innerHTML = "pause"; //change the button to say pause
+    }
+ 
+    function pause(){
+        player.pause(); //pause the music
+        isPlaying = false; //set to false because the music is not playing
+        btn.innerHTML = "play"; //change the button to say play
+    }
+ 
+    player.onended = function(){
+        isPlaying = false; //the song has ended, isPlaying is false
+        btn.innerHTML = "play"; //change the button to say play
+    }
+</script>
+ 
+<table style="border:3px ridge white; overflow:auto; width:100%; background:transparent;">
+<tr>
+<td style="border:3px outset white"><a href="/">first</a>
+</td>
+</tr>
+<tr>
+<td style="border:3px outset white"><a href="/">second</a>
+</td>
+</tr>
+<tr>
+<td style="border:3px outset white"><a href="/">third</a>
+</td>
+</tr>
+<tr>
+<td style="border:3px outset white"><a href="/">fourth</a>
+</td>
+</tr>
+<tr>
+<td style="border:3px outset white;"><a href="/">fifth</a>
+</td>
+</tr>
+<tr>
+<td style="border:3px outset white;"><a href="/">LOL</a>
+</td>
+</tr>
+</table>
+ 
+<div id="desc">
+ 
+Put whatever you'd like, or nothing at all
+ 
+<!-- credit. you can change what this link looks like but i'd still really appreciate being credited for the base! -->
+<div id="emoticon">
+<a href="https://walnutcookie.tumblr.com/">&#9400;</a>
+</div>
+<!-- credit end -->
+ 
+</div>
+</div>
+ 
+<div id="wrapper">
+<div id="content">
+<center>Have fun <img src="https://64.media.tumblr.com/tumblr_m1hucbIMqt1qcuqz3.gif"></center>
+</div>
+</div>
+ 
+<div id="pagedoll">
+<a href="/" width="100"></a>
+</div>
+ 
 </body>
 </html>
