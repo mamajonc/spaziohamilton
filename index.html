@@ -131,8 +131,136 @@
   </aside>
 
   <main id="wrapper">
+  <div id="gameContainer">
     <h1>Coming Soon</h1>
-    <p>███▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒</p>
+
+    <!-- ASCII Game -->
+    <pre id="asciiGame" style="font-size:2rem; line-height:1.2; margin:20px auto;"></pre>
+  </div>
+</main>
+
+<style>
+  /* Make wrapper a flex container to center content */
+  #wrapper {
+    margin-left: 250px; /* keep sidebar offset */
+    padding: 0 40px 100px; /* bottom padding for footer */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* horizontal center */
+    align-items: center;     /* vertical center */
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  #gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #asciiGame {
+    white-space: pre;
+  }
+
+  @media (max-width: 600px) {
+    #asciiGame {
+      font-size: 1.5rem; /* shrink font on small screens */
+    }
+  }
+</style>
+
+<script>
+const gridSize = 6; // 6x6 grid
+let playerX = 0;
+let playerY = 0;
+
+const playerChar = '👩‍🔬';
+const bugChar = '🐛';
+const emptyChar = '⬜';
+
+let grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(emptyChar));
+let bugCount = 0;
+const maxBugs = gridSize * gridSize;
+
+// randomly add a bug to an empty cell
+function spawnBug() {
+    const emptyCells = [];
+    for (let y = 0; y < gridSize; y++) {
+        for (let x = 0; x < gridSize; x++) {
+            if (grid[y][x] === emptyChar && !(x === playerX && y === playerY)) {
+                emptyCells.push({x, y});
+            }
+        }
+    }
+    if (emptyCells.length > 0) {
+        const choice = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+        grid[choice.y][choice.x] = bugChar;
+        bugCount++;
+    }
+}
+
+// draw the grid
+function drawGame() {
+    let display = '';
+    for (let y = 0; y < gridSize; y++) {
+        for (let x = 0; x < gridSize; x++) {
+            if (x === playerX && y === playerY) {
+                display += playerChar;
+            } else {
+                display += grid[y][x];
+            }
+        }
+        display += '\n';
+    }
+    document.getElementById('asciiGame').textContent = display;
+}
+
+// move player and whack bugs
+function movePlayer(dx, dy) {
+    const newX = Math.max(0, Math.min(gridSize - 1, playerX + dx));
+    const newY = Math.max(0, Math.min(gridSize - 1, playerY + dy));
+    playerX = newX;
+    playerY = newY;
+
+    // whack bug if present
+    if (grid[playerY][playerX] === bugChar) {
+        grid[playerY][playerX] = emptyChar;
+        bugCount--;
+    }
+}
+
+// main update loop
+function update() {
+    if (Math.random() < 0.02) { // spawn probability
+        spawnBug();
+    }
+
+    drawGame();
+
+    if (bugCount >= maxBugs) {
+        alert('Game Over! The bugs took over!');
+        grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(emptyChar));
+        playerX = 0;
+        playerY = 0;
+        bugCount = 0;
+    }
+
+    requestAnimationFrame(update);
+}
+
+// arrow key controls
+document.addEventListener('keydown', e => {
+    switch (e.code) {
+        case 'ArrowUp': movePlayer(0, -1); break;
+        case 'ArrowDown': movePlayer(0, 1); break;
+        case 'ArrowLeft': movePlayer(-1, 0); break;
+        case 'ArrowRight': movePlayer(1, 0); break;
+    }
+});
+
+update();
+</script>
+
   </main>
 
   <footer>
