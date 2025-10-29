@@ -48,8 +48,15 @@
       background: white;
       border-right: 3px white outset;
       padding: 10px;
-      overflow-y: auto;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    #side-content {
+      overflow-y: auto;
+      flex-grow: 1;
     }
 
     #side img {
@@ -71,10 +78,29 @@
       padding: 0;
     }
 
+    #contact-link {
+      text-align: center;
+      font-style: normal;
+      margin-top: 20px;
+      padding-bottom: 10px;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+
+    #contact-link a {
+      color: #b619ff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #contact-link a:hover {
+      text-decoration: underline;
+    }
+
     /* Main content */
     #wrapper {
       margin-left: 250px;
-      padding: 60px 40px 100px; /* bottom padding so text doesn’t overlap footer */
+      padding: 60px 40px 100px;
       text-align: center;
       min-height: 100vh;
       box-sizing: border-box;
@@ -122,146 +148,165 @@
 <body>
 
   <aside id="side">
-    <img src="./images/margaret_2.jpg" alt="Margaret Hamilton">
-    <div id="desc">
-	</br>
-      <b>"We had to find a way and we did. Looking back, we were the luckiest people in the world; there was no choice but to be pioneers."</b>
-      <p>Margaret Hamilton</p>
+    <div id="side-content">
+      <img src="./images/margaret_2.jpg" alt="Margaret Hamilton">
+      <div id="desc">
+        </br>
+        <b>"We had to find a way and we did. Looking back, we were the luckiest people in the world; there was no choice but to be pioneers."</b>
+        <p>Margaret Hamilton</p>
+      </div>
+    </div>
+
+    <div id="contact-link">
+      <a href="https://forms.gle/MMgd7sMYTRLZcWjp9" target="_blank">Contact</a>
     </div>
   </aside>
 
   <main id="wrapper">
-  <div id="gameContainer">
-    <h1>Coming Soon</h1>
+    <div id="gameContainer">
+      <h1>Coming Soon</h1>
 
-    <!-- ASCII Game -->
-    <pre id="asciiGame" style="font-size:2rem; line-height:1.2; margin:20px auto;"></pre>
-  </div>
-</main>
-
-<style>
-  /* Make wrapper a flex container to center content */
-  #wrapper {
-    margin-left: 250px; /* keep sidebar offset */
-    padding: 0 40px 100px; /* bottom padding for footer */
-    min-height: 100vh;
-    display: flex;
-    justify-content: center; /* horizontal center */
-    align-items: center;     /* vertical center */
-    text-align: center;
-    box-sizing: border-box;
-  }
-
-  #gameContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #asciiGame {
-    white-space: pre;
-  }
-
-  @media (max-width: 600px) {
-    #asciiGame {
-      font-size: 1.5rem; /* shrink font on small screens */
-    }
-  }
-</style>
-
-<script>
-const gridSize = 6; // 6x6 grid
-let playerX = 0;
-let playerY = 0;
-
-const playerChar = '👩‍🔬';
-const bugChar = '🐛';
-const emptyChar = '⬜';
-
-let grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(emptyChar));
-let bugCount = 0;
-const maxBugs = gridSize * gridSize;
-
-// randomly add a bug to an empty cell
-function spawnBug() {
-    const emptyCells = [];
-    for (let y = 0; y < gridSize; y++) {
-        for (let x = 0; x < gridSize; x++) {
-            if (grid[y][x] === emptyChar && !(x === playerX && y === playerY)) {
-                emptyCells.push({x, y});
-            }
-        }
-    }
-    if (emptyCells.length > 0) {
-        const choice = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-        grid[choice.y][choice.x] = bugChar;
-        bugCount++;
-    }
-}
-
-// draw the grid
-function drawGame() {
-    let display = '';
-    for (let y = 0; y < gridSize; y++) {
-        for (let x = 0; x < gridSize; x++) {
-            if (x === playerX && y === playerY) {
-                display += playerChar;
-            } else {
-                display += grid[y][x];
-            }
-        }
-        display += '\n';
-    }
-    document.getElementById('asciiGame').textContent = display;
-}
-
-// move player and whack bugs
-function movePlayer(dx, dy) {
-    const newX = Math.max(0, Math.min(gridSize - 1, playerX + dx));
-    const newY = Math.max(0, Math.min(gridSize - 1, playerY + dy));
-    playerX = newX;
-    playerY = newY;
-
-    // whack bug if present
-    if (grid[playerY][playerX] === bugChar) {
-        grid[playerY][playerX] = emptyChar;
-        bugCount--;
-    }
-}
-
-// main update loop
-function update() {
-    if (Math.random() < 0.02) { // spawn probability
-        spawnBug();
-    }
-
-    drawGame();
-
-    if (bugCount >= maxBugs) {
-        alert('Game Over! The bugs took over!');
-        grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(emptyChar));
-        playerX = 0;
-        playerY = 0;
-        bugCount = 0;
-    }
-
-    requestAnimationFrame(update);
-}
-
-// arrow key controls
-document.addEventListener('keydown', e => {
-    switch (e.code) {
-        case 'ArrowUp': movePlayer(0, -1); break;
-        case 'ArrowDown': movePlayer(0, 1); break;
-        case 'ArrowLeft': movePlayer(-1, 0); break;
-        case 'ArrowRight': movePlayer(1, 0); break;
-    }
-});
-
-update();
-</script>
-
+      <!-- ASCII Game -->
+      <pre id="asciiGame" style="font-size:2rem; line-height:1.2; margin:20px auto; cursor:pointer;"></pre>
+      <p id="status" style="font-family:monospace; font-size:1.2rem; color:#666;"></p>
+    </div>
   </main>
+
+  <style>
+    #wrapper {
+      margin-left: 250px;
+      padding: 0 40px 100px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+
+    #gameContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #asciiGame {
+      white-space: pre;
+      user-select: none;
+    }
+
+    @media (max-width: 600px) {
+      #asciiGame {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+
+  <script>
+  const gridSize = 6;
+  const playerChar = '👩‍🔬';
+  const bugChar = '🐛';
+  const emptyChar = '⬜';
+
+  let grid, playerX, playerY, bugCount, gameOver;
+
+  function initGame() {
+      grid = Array(gridSize).fill(null).map(() => Array(gridSize).fill(emptyChar));
+      playerX = 0;
+      playerY = 0;
+      bugCount = 0;
+      gameOver = false;
+      document.getElementById('status').textContent = '';
+  }
+
+  function spawnBug() {
+      const emptyCells = [];
+      for (let y = 0; y < gridSize; y++) {
+          for (let x = 0; x < gridSize; x++) {
+              if (grid[y][x] === emptyChar && !(x === playerX && y === playerY)) {
+                  emptyCells.push({x, y});
+              }
+          }
+      }
+      if (emptyCells.length > 0) {
+          const choice = emptyCells[Math.floor(Math.random() * emptyCells.length)];
+          grid[choice.y][choice.x] = bugChar;
+          bugCount++;
+      }
+  }
+
+  function drawGame() {
+      let display = '';
+      for (let y = 0; y < gridSize; y++) {
+          for (let x = 0; x < gridSize; x++) {
+              display += (x === playerX && y === playerY) ? playerChar : grid[y][x];
+          }
+          display += '\n';
+      }
+      document.getElementById('asciiGame').textContent = display;
+  }
+
+  function movePlayer(x, y) {
+      if (gameOver) return;
+      playerX = x;
+      playerY = y;
+      if (grid[y][x] === bugChar) {
+          grid[y][x] = emptyChar;
+          bugCount--;
+      }
+  }
+
+  function handleKey(e) {
+      if (gameOver) return;
+      let dx = 0, dy = 0;
+      if (e.code === 'ArrowUp') dy = -1;
+      if (e.code === 'ArrowDown') dy = 1;
+      if (e.code === 'ArrowLeft') dx = -1;
+      if (e.code === 'ArrowRight') dx = 1;
+      playerX = Math.max(0, Math.min(gridSize - 1, playerX + dx));
+      playerY = Math.max(0, Math.min(gridSize - 1, playerY + dy));
+      if (grid[playerY][playerX] === bugChar) {
+          grid[playerY][playerX] = emptyChar;
+          bugCount--;
+      }
+  }
+
+  function handleClick(e) {
+      const rect = e.target.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const clickY = e.clientY - rect.top;
+      const cellWidth = rect.width / gridSize;
+      const cellHeight = rect.height / gridSize;
+      const x = Math.floor(clickX / cellWidth);
+      const y = Math.floor(clickY / cellHeight);
+
+      if (gameOver) {
+          initGame();
+          return;
+      }
+
+      movePlayer(x, y);
+  }
+
+  function gameLoop() {
+      if (!gameOver) {
+          if (Math.random() < 0.03) spawnBug(); // slow bug spawn rate
+          if (bugCount >= gridSize * gridSize - 1) {
+              gameOver = true;
+              document.getElementById('status').textContent = 'Game Over! The bugs took over 🐛 Click or tap to restart.';
+          }
+          drawGame();
+      }
+      requestAnimationFrame(gameLoop);
+  }
+
+  document.addEventListener('keydown', handleKey);
+  document.getElementById('asciiGame').addEventListener('click', handleClick);
+  document.getElementById('asciiGame').addEventListener('touchstart', handleClick);
+
+  initGame();
+  gameLoop();
+  </script>
 
   <footer>
     <strong>Spazio Hamilton © 2025 - </strong><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
